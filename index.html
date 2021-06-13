@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacine lottery</title>
- 
+
 </head>
+
 <body>
-    <h1>VACCINE ROLLER</h1>
+    <div class="topContainer">
+        <img src="static/Mandel_Logo.svg" id="logo" alt="Mande_Camping_Logo">
+        <h1 class="title">Mandel Camping</h1>
+        <div id="content"></div>
+    </div>
+    <div class="buttonContainer"><button id="captchaSubmit" >Elküld</button></div>
     <div id="container">
-        <h1>QR Code Scanner</h1>
-    
-        <a id="btn-scan-qr">
-            <img src="https://uploads.sitepoint.com/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-        </a>
-    
-        <canvas hidden="" id="qr-canvas"></canvas>
-    
-        <div id="qr-result" hidden="">
-            <b>Data:</b> <span id="outputData"></span>
-        </div>
+        <button id="btn-scan-qr" >SCAN</button>
+        <canvas hidden="true" id="qr-canvas"></canvas>
     </div>
 </body>
 <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
 <script type="module" src="main.js"></script>
 <script type="module" src="qrCodeReader.js"></script>
+
 </html>

@@ -1,27 +1,23 @@
-import { stringToHTML } from "./main.js";
+import { renderData} from "./main.js";
 
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
 const canvas = canvasElement.getContext("2d");
-
-const qrResult = document.getElementById("qr-result");
-const outputData = document.getElementById("outputData");
 const btnScanQR = document.getElementById("btn-scan-qr");
+const contentContainer = document.getElementById("content");
 
 let scanning = false;
 
 qrcode.callback = (res) => {
     if (res) {
-     getEesztData(res);
-      outputData.innerText = res;
       scanning = false;
       video.srcObject.getTracks().forEach(track => {
         track.stop();
       });
-  
-      qrResult.hidden = false;
-      btnScanQR.hidden = false;
       canvasElement.hidden = true;
+      btnScanQR.hidden = false;
+      getEesztData(res);
+      contentContainer.hidden=false
     }
   };
 
@@ -34,20 +30,21 @@ qrcode.callback = (res) => {
   }
 
   btnScanQR.onclick = () => {
-    getEesztData();
-  // navigator.mediaDevices
-  //   .getUserMedia({ video: { facingMode: "environment" } })
-  //   .then(function(stream) {
-  //     scanning = true;
-  //     qrResult.hidden = true;
-  //     btnScanQR.hidden = true;
-  //     canvasElement.hidden = false;
-  //     video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-  //     video.srcObject = stream;
-  //     video.play();
-  //     tick();
-  //     scan();
-  //   });
+    // let mockUrl="https://www.eeszt.gov.hu/covid-card/-/az/eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFRVNaVCIsInN1YiI6IjI0MjEwMjgxMzE5NDE4MzQ3MC4xIiwiaWQiOjg5NTAzMjE2NTd9.vEKsIP0c9y1M8F7x8Qiqwe0OkIG_1woSlY-L9X3ba7I?=*&&"
+    // getEesztData(mockUrl)
+  contentContainer.hidden=true
+  navigator.mediaDevices
+    .getUserMedia({ video: { facingMode: "environment" } })
+    .then(function(stream) {
+      scanning = true;
+      btnScanQR.hidden = true;
+      canvasElement.hidden = false;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.srcObject = stream;
+      video.play();
+      tick();
+      scan();
+    });
   };
 
   function scan() {
@@ -58,6 +55,8 @@ qrcode.callback = (res) => {
     }
   }
 
+
+
 let myHeaders = new Headers();
 myHeaders.append("Origin", "localhost");
 
@@ -67,15 +66,10 @@ let requestOptions = {
   redirect: 'follow'
 };
 
-let renderData=(rawHtml)=>{
- let body = stringToHTML(rawHtml)
-  console.log(body)
-}
-
  const getEesztData = (eesztUrl)=>{
-  fetch("https://fathomless-coast-39519.herokuapp.com/https://www.eeszt.gov.hu/covid-card/-/az/eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFRVNaVCIsInN1YiI6IjI0MjEwMjgxMzE5NDE4MzQ3MC4xIiwiaWQiOjg5NTAzMjE2NTd9.vEKsIP0c9y1M8F7x8Qiqwe0OkIG_1woSlY-L9X3ba7I?=*&&", requestOptions)
+  fetch("https://fathomless-coast-39519.herokuapp.com/"+eesztUrl, requestOptions)
   .then(response => response.text())
-  .then(rawHtml => renderData(rawHtml))
+  .then(rawHtml => renderData(rawHtml,eesztUrl))
   .catch(error => console.log('error', error));
  }
 
