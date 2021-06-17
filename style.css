@@ -49,7 +49,7 @@ html {
     width: 100%;
     display: grid;
     place-items: center;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
   }
 
   #content{
@@ -72,7 +72,7 @@ html {
   }
 
   button{
-    background-color: yellowgreen;
+    background-color: rgb(153, 204, 50);
     color: white;
     font-size: 15px;
     border: none;
@@ -82,4 +82,23 @@ html {
   }
   .data-row{
     text-align: center;
+  }
+
+  .bg-valid{
+    background: url("static/check_mark.svg");
+    height: 60px;
+    width: 60px;
+    background-size: 60px 60px;
+  }
+  .validity-icon{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-bottom: 10px;
+  }
+
+  .drink{
+    width: 100%;
+    color: whitesmoke;
+    padding-bottom: 10px;
   }
