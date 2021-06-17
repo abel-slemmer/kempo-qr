@@ -14,15 +14,18 @@
     <div class="topContainer">
         <img src="static/Mandel_Logo.svg" id="logo" alt="Mande_Camping_Logo">
         <h1 class="title">Mandel Camping</h1>
-        <div id="content"></div>
+        <div id="content">
+            <div id="intro" >Szkenneld be a védettségi igazolványodat és derítsd ki milyen védőital jár neked. </div>
+        </div>
     </div>
     <div id="container">
-        <div class="drink" >🍺Ajánlott Védőital: Mézes Pálesz🍺</div>
+        <div id="drink" hidden="true" ></div>
         <button id="btn-scan-qr" >SCAN</button>
         <canvas hidden="true" id="qr-canvas"></canvas>
     </div>
 </body>
 <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+<script type="module" src="drinkRoller.js"></script>
 <script type="module" src="main.js"></script>
 <script type="module" src="qrCodeReader.js"></script>
 

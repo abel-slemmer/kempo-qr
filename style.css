@@ -49,7 +49,6 @@ html {
     width: 100%;
     display: grid;
     place-items: center;
-    padding-bottom: 3%;
   }
 
   #content{
@@ -82,6 +81,7 @@ html {
   }
   .data-row{
     text-align: center;
+    padding-bottom: 10px;
   }
 
   .bg-valid{
@@ -97,8 +97,17 @@ html {
     padding-bottom: 10px;
   }
 
-  .drink{
+  #drink{
     width: 100%;
     color: whitesmoke;
     padding-bottom: 10px;
+  }
+
+  #intro{
+    font-size: 30px;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 12px;
   }

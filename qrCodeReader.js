@@ -1,5 +1,6 @@
 import { renderData} from "./main.js";
 
+export const drinkContainer = document.getElementById("drink") 
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
 const canvas = canvasElement.getContext("2d");
@@ -32,6 +33,7 @@ qrcode.callback = (res) => {
   btnScanQR.onclick = () => {
     // let mockUrl="https://www.eeszt.gov.hu/covid-card/-/az/eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFRVNaVCIsInN1YiI6IjI0MjEwMjgxMzE5NDE4MzQ3MC4xIiwiaWQiOjg5NTAzMjE2NTd9.vEKsIP0c9y1M8F7x8Qiqwe0OkIG_1woSlY-L9X3ba7I?=*&&"
     // getEesztData(mockUrl)
+  drinkContainer.hidden=true
   contentContainer.hidden=true
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })

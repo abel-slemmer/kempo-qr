@@ -29,7 +29,7 @@ const drinks = {
     16: "Mézes pálesz",
     17: "Szőlő pálesz",
     18: "Mézes pálesz",
-    19: "Cseresznye pálesz",
+    19: "Vice házmester",
     20: "Mézes pálesz",
     21: "Mézes pálesz",
     22: "Cseresznye pálesz",
@@ -39,7 +39,7 @@ const drinks = {
     26: "Nagy fröccs",
     27: "Sport fröccs",
     28: "Házmester",
-    29: "Vice házmester",
+    29: "Cseresznye pálesz",
     30: "Mézes pálesz",
     31: "Pohár sör",
     32: "Korsó sör",
@@ -73,10 +73,7 @@ const getCharsValue = (first, second) => {
 
 export const getDrink = (name) => {
     let [firstName, secondName] = name.replace(/\s+/g, ' ').trim().split(" ");
-    console.log(firstName);
     let drinkNumber = getCharsValue(firstName.charAt(0).toLowerCase(), secondName.charAt(0).toLowerCase())
-    console.log(drinkNumber)
-
     if(drinkNumber<1 || drinkNumber>50){
         drinkNumber=1
     }
