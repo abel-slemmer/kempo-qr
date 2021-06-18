@@ -50,9 +50,15 @@ html {
     display: grid;
     place-items: center;
   }
+  .contentContainer{
+    width: 100%;
+    display: grid;
+    place-items: center;
 
+  }
   #content{
-    color:white
+    color:white;
+    text-align: center;
   }
 
   .buttonContainer{
@@ -67,7 +73,6 @@ html {
   #logo{
     width: 60px;
     height: auto;
-
   }
 
   button{
@@ -111,3 +116,26 @@ html {
     margin-right: auto;
     padding-bottom: 12px;
   }
+
+  #loading{
+    background-color:black;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    display: none;
+    place-items: center; 
+  }
+  .spinner{
+    height: 150px;
+    width: 150px;
+  }
+  form{
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .catcpha-input-row{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    }

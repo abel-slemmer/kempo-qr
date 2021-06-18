@@ -14,14 +14,17 @@
     <div class="topContainer">
         <img src="static/Mandel_Logo.svg" id="logo" alt="Mande_Camping_Logo">
         <h1 class="title">Mandel Camping</h1>
-        <div id="content">
-            <div id="intro" >Szkenneld be a védettségi igazolványodat és derítsd ki milyen védőital jár neked. </div>
-        </div>
+    </div>
+    <div class="contentContainer">
+    <div id="loading" ><object data="static/Mandel_Logo_Spin.svg" type="image/svg+xml" class="spinner"></object></div>
+    <div id="content">
+        <div id="intro">Szkenneld be a védettségi igazolványodat és derítsd ki milyen védőital jár neked. </div>
     </div>
     <div id="container">
-        <div id="drink" hidden="true" ></div>
-        <button id="btn-scan-qr" >SCAN</button>
+        <div id="drink" hidden="true"></div>
+        <button id="btn-scan-qr">SCAN</button>
         <canvas hidden="true" id="qr-canvas"></canvas>
+    </div>
     </div>
 </body>
 <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>

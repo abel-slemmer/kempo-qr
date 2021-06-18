@@ -1,22 +1,30 @@
 import { renderData} from "./main.js";
 
 export const drinkContainer = document.getElementById("drink") 
+const spinner= document.getElementById("loading")
 const video = document.createElement("video");
 const canvasElement = document.getElementById("qr-canvas");
 const canvas = canvasElement.getContext("2d");
-const btnScanQR = document.getElementById("btn-scan-qr");
+export const btnScanQR = document.getElementById("btn-scan-qr");
 const contentContainer = document.getElementById("content");
 
 let scanning = false;
 
+export const loadingOn = ()=>{
+  spinner.style.display="grid"
+}
+export const loadingoff = ()=>{
+  spinner.style.display="none"
+}
+
 qrcode.callback = (res) => {
     if (res) {
+      loadingOn();
       scanning = false;
       video.srcObject.getTracks().forEach(track => {
         track.stop();
       });
       canvasElement.hidden = true;
-      btnScanQR.hidden = false;
       getEesztData(res);
       contentContainer.hidden=false
     }
@@ -33,13 +41,13 @@ qrcode.callback = (res) => {
   btnScanQR.onclick = () => {
     // let mockUrl="https://www.eeszt.gov.hu/covid-card/-/az/eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFRVNaVCIsInN1YiI6IjI0MjEwMjgxMzE5NDE4MzQ3MC4xIiwiaWQiOjg5NTAzMjE2NTd9.vEKsIP0c9y1M8F7x8Qiqwe0OkIG_1woSlY-L9X3ba7I?=*&&"
     // getEesztData(mockUrl)
+  btnScanQR.hidden = true;
   drinkContainer.hidden=true
   contentContainer.hidden=true
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: "environment" } })
     .then(function(stream) {
       scanning = true;
-      btnScanQR.hidden = true;
       canvasElement.hidden = false;
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.srcObject = stream;

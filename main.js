@@ -1,5 +1,5 @@
 import { getDrink } from "./drinkRoller.js";
-import { drinkContainer } from "./qrCodeReader.js";
+import { drinkContainer, loadingoff, btnScanQR, loadingOn} from "./qrCodeReader.js";
 
 
 const contentContainer = document.getElementById("content");
@@ -10,12 +10,16 @@ export const renderData = (rawHtml, eesztUrl) => {
 
 	contentContainer.innerHTML = contentElement.innerHTML
 	if (captcha != null) {
-		document.getElementsByTagName("input")[0].required = true
+		let input = document.getElementsByTagName("input")[0]
+		input.required = true
+		input.autocomplete = "off"
 		document.getElementsByTagName("form")[0].onsubmit = (event) => { event.preventDefault(); captchaSubmit(eesztUrl) }
 	} else {
 		let drink = getDrinkForName()
 		editHtml(drink)
+		btnScanQR.hidden = false;
 	}
+	loadingoff();
 }
 
 export const stringToHTML = function (str) {
@@ -42,6 +46,7 @@ const editHtml = (drink) => {
 }
 
 export const captchaSubmit = (eesztUrl) => {
+	loadingOn()
 	const captchaCode = document.getElementById("captchaCode").value
 	sendCaptcha(captchaCode, eesztUrl);
 }
